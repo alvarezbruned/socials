@@ -1,0 +1,370 @@
+<?php
+/**
+ * Implements hook_block_info().
+ */
+function socials_block_info() {
+  $blocks = array();
+  $blocks['mi_bloque'] = array(
+    'info' => t('bloc Socials'),
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function socials_block_configure($delta='') {
+  $form = array();
+  
+  switch($delta) {
+    case 'mi_bloque' :
+$form['socials_amplef'] = array(
+'#type' => 'textfield',
+'#title' => t("Desa l'Amplada i l'Alçada dels logos de xarxes"),
+'#default_value' => variable_get('socials_amplev', ""),
+'#size' => 60,
+'#maxlength' => 250,
+'#description' => t("Ample i Alçada dels logos, en pixels - només entra número"),
+);
+$form['socials_espaiatf'] = array(
+'#type' => 'textfield',
+'#title' => t("Desa l'espai entre icones"),
+'#default_value' => variable_get('socials_espaiatv', ""),
+'#size' => 60,
+'#maxlength' => 250,
+);
+$form['socials_check_1f'] = array(
+'#type' => 'checkbox',
+'#title' => t('Activa image 1'),
+'#default_value' => variable_get('socials_check_1v',''),
+);
+$form['socials_url_1f'] = array(
+'#type' => 'textfield',
+'#title' => t('Configura el primer enllaç'),
+'#default_value' => variable_get('socials_url_1v', ""),
+'#size' => 60,
+'#maxlength' => 250,
+'#description' => t("Afegeix la URL"),
+);
+      // File selection form element
+      $form['file'] = array(
+        '#name' => 'block_image',
+        '#type' => 'managed_file',
+        '#title' => t('Selecciona una imatge'),
+        '#description' => t('Select an Image for the custom block.  Only *.gif, *.png, *.jpg, and *.jpeg images allowed.'),
+        '#default_value' => variable_get('block_image_fid', ''),
+        '#upload_location' => 'public://imatges-socials/',
+        '#upload_validators' => array(
+          'file_validate_extensions' => array('gif png jpg jpeg'),
+        ),
+      );
+$form['socials_check_2f'] = array(
+'#type' => 'checkbox',
+'#title' => t('Activa image 2'),
+'#default_value' => variable_get('socials_check_2v',''),
+);
+$form['socials_url_2f'] = array(
+'#type' => 'textfield',
+'#title' => t('Configura el segon enllaç'),
+'#default_value' => variable_get('socials_url_2v', ""),
+'#size' => 60,
+'#maxlength' => 250,
+'#description' => t("Afegeix la URL"),
+);
+	  $form['file2'] = array(
+        '#name' => 'block_image',
+        '#type' => 'managed_file',
+        '#title' => t('Selecciona una imatge'),
+        '#description' => t('Select an Image for the custom block.  Only *.gif, *.png, *.jpg, and *.jpeg images allowed.'),
+        '#default_value' => variable_get('block_image_fid2', ''),
+        '#upload_location' => 'public://imatges-socials/',
+        '#upload_validators' => array(
+          'file_validate_extensions' => array('gif png jpg jpeg'),
+        ),
+      );
+$form['socials_check_3f'] = array(
+'#type' => 'checkbox',
+'#title' => t('Activa image 3'),
+'#default_value' => variable_get('socials_check_3v',''),
+);
+$form['socials_url_3f'] = array(
+'#type' => 'textfield',
+'#title' => t('Configura el tercer enllaç'),
+'#default_value' => variable_get('socials_url_3v', ""),
+'#size' => 60,
+'#maxlength' => 250,
+'#description' => t("Afegeix la URL"),
+);
+	  $form['file3'] = array(
+        '#name' => 'block_image',
+        '#type' => 'managed_file',
+        '#title' => t('Selecciona una imatge'),
+        '#description' => t('Select an Image for the custom block.  Only *.gif, *.png, *.jpg, and *.jpeg images allowed.'),
+        '#default_value' => variable_get('block_image_fid3', ''),
+        '#upload_location' => 'public://imatges-socials/',
+        '#upload_validators' => array(
+          'file_validate_extensions' => array('gif png jpg jpeg'),
+        ),
+      );
+$form['socials_check_4f'] = array(
+'#type' => 'checkbox',
+'#title' => t('Activa image 4'),
+'#default_value' => variable_get('socials_check_4v',''),
+);
+$form['socials_url_4f'] = array(
+'#type' => 'textfield',
+'#title' => t('Configura el quart enllaç'),
+'#default_value' => variable_get('socials_url_4v', ""),
+'#size' => 60,
+'#maxlength' => 250,
+'#description' => t("Afegeix la URL"),
+);
+	  $form['file4'] = array(
+        '#name' => 'block_image',
+        '#type' => 'managed_file',
+        '#title' => t('Selecciona una imatge'),
+        '#description' => t('Select an Image for the custom block.  Only *.gif, *.png, *.jpg, and *.jpeg images allowed.'),
+        '#default_value' => variable_get('block_image_fid4', ''),
+        '#upload_location' => 'public://imatges-socials/',
+        '#upload_validators' => array(
+          'file_validate_extensions' => array('gif png jpg jpeg'),
+        ),
+      );
+$form['socials_check_5f'] = array(
+'#type' => 'checkbox',
+'#title' => t('Activa image 5'),
+'#default_value' => variable_get('socials_check_5v',''),
+);
+$form['socials_url_5f'] = array(
+'#type' => 'textfield',
+'#title' => t('Configura el cinquè enllaç'),
+'#default_value' => variable_get('socials_url_5v', ""),
+'#size' => 60,
+'#maxlength' => 250,
+'#description' => t("Afegeix la URL"),
+);
+	  $form['file5'] = array(
+        '#name' => 'block_image',
+        '#type' => 'managed_file',
+        '#title' => t('Selecciona una imatge'),
+        '#description' => t('Select an Image for the custom block.  Only *.gif, *.png, *.jpg, and *.jpeg images allowed.'),
+        '#default_value' => variable_get('block_image_fid5', ''),
+        '#upload_location' => 'public://imatges-socials/',
+        '#upload_validators' => array(
+          'file_validate_extensions' => array('gif png jpg jpeg'),
+        ),
+      );
+      break;
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function socials_block_save($delta = '', $edit = array()) {
+  switch($delta) {
+    case 'mi_bloque' :
+      // Saving the WYSIWYG text      
+      //variable_set('text_variable', $edit['text_body']['value']);
+	variable_set('socials_check_1v',$edit['socials_check_1f']);
+	variable_set('socials_check_2v',$edit['socials_check_2f']);
+	variable_set('socials_check_3v',$edit['socials_check_3f']);
+	variable_set('socials_check_4v',$edit['socials_check_4f']);
+	variable_set('socials_check_5v',$edit['socials_check_5f']);
+	variable_set('socials_url_1v',$edit['socials_url_1f']);
+	variable_set('socials_url_2v',$edit['socials_url_2f']);
+	variable_set('socials_url_3v',$edit['socials_url_3f']);
+	variable_set('socials_url_4v',$edit['socials_url_4f']);
+	variable_set('socials_url_5v',$edit['socials_url_5f']);
+	variable_set('socials_amplev',$edit['socials_amplef']);
+	variable_set('socials_espaiatv',$edit['socials_espaiatf']);
+      // Saving the file, setting it to a permanent state, setting a FID variable
+	  if(variable_get('socials_check_1v'))
+	  {
+      $file = file_load($edit['file']);
+      $file->status = FILE_STATUS_PERMANENT;
+      file_save($file);
+      $block = block_load('socials', $delta);
+      file_usage_add($file, 'socials', 'block', $block->bid);
+      variable_set('block_image_fid', $file->fid);
+	  }
+	  if(variable_get('socials_check_2v'))
+	  {
+	  $file2 = file_load($edit['file2']);
+      $file2->status = FILE_STATUS_PERMANENT;
+      file_save($file2);
+      $block = block_load('socials', $delta);
+      file_usage_add($file2, 'socials', 'block', $block->bid);
+      variable_set('block_image_fid2', $file2->fid);
+	  }
+	  
+	  if(variable_get('socials_check_3v'))
+	  {
+      $file3 = file_load($edit['file3']);
+      $file3->status = FILE_STATUS_PERMANENT;
+      file_save($file3);
+      $block = block_load('socials', $delta);
+      file_usage_add($file3, 'socials', 'block', $block->bid);
+      variable_set('block_image_fid3', $file3->fid);
+	  }
+	  if(variable_get('socials_check_4v'))
+	  {
+	  $file4 = file_load($edit['file4']);
+      $file4->status = FILE_STATUS_PERMANENT;
+      file_save($file4);
+      $block = block_load('socials', $delta);
+      file_usage_add($file4, 'socials', 'block', $block->bid);
+      variable_set('block_image_fid4', $file4->fid);
+	  }
+	  if(variable_get('socials_check_5v'))
+	  {
+      $file5 = file_load($edit['file5']);
+      $file5->status = FILE_STATUS_PERMANENT;
+      file_save($file5);
+      $block = block_load('socials', $delta);
+      file_usage_add($file5, 'socials', 'block', $block->bid);
+      variable_set('block_image_fid5', $file5->fid);
+	  }
+	  
+      break;
+  }
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function socials_block_view($delta='') {
+  $block = array();
+  
+  switch($delta) {
+    case 'mi_bloque' :
+      $block['content'] = mi_bloque_view();
+      break;
+  }
+  
+  return $block;
+}
+
+/**
+ * Custom function to assemble renderable array for block content.
+ * Returns a renderable array with the block content.
+ * @return
+ *   returns a renderable array of block content.
+ */
+function mi_bloque_view() {
+  $block = array();
+
+  // Capture the image file path and form into HTML with attributes
+  $image_file = file_load(variable_get('block_image_fid', ''));
+  $image_file2 = file_load(variable_get('block_image_fid2', ''));
+  $image_file3 = file_load(variable_get('block_image_fid3', ''));
+  $image_file4 = file_load(variable_get('block_image_fid4', ''));
+  $image_file5 = file_load(variable_get('block_image_fid5', ''));
+  $image_path = '';
+  $image_path2 = '';
+  $image_path3 = '';
+  $image_path4 = '';
+  $image_path5 = '';
+  $image='';
+  $image2='';
+  $image3='';
+  $image4='';
+  $image5='';
+
+  if ((variable_get('socials_check_1v'))&&(isset($image_file->uri))) {
+    $image_path = $image_file->uri;
+  }
+  if ((variable_get('socials_check_2v'))&&(isset($image_file2->uri))) {
+    $image_path2 = $image_file2->uri;
+  }
+  if ((variable_get('socials_check_3v'))&&(isset($image_file3->uri))) {
+    $image_path3 = $image_file3->uri;
+  }
+  if ((variable_get('socials_check_4v'))&&(isset($image_file4->uri))) {
+    $image_path4 = $image_file4->uri;
+  }
+  if ((variable_get('socials_check_5v'))&&(isset($image_file5->uri))) {
+    $image_path5 = $image_file5->uri;
+  }
+if(variable_get('socials_check_1v')){
+  $image = theme_image(array(
+    'path' => ($image_path),
+    'alt' => t(''),
+    'title' => t(''),
+    'attributes' => array('class' => 'class_name','width'=>variable_get('socials_amplev', ""), 'height'=>variable_get('socials_amplev', "")),
+  ));
+}
+if(variable_get('socials_check_2v')){
+  $image2 = theme_image(array(
+    'path' => ($image_path2),
+    'alt' => t(''),
+    'title' => t(''),
+    'attributes' => array('class' => 'class_name','width'=>variable_get('socials_amplev', ""), 'height'=>variable_get('socials_amplev', "")),
+  ));
+}
+if(variable_get('socials_check_3v')){
+  $image3 = theme_image(array(
+    'path' => ($image_path3),
+    'alt' => t(''),
+    'title' => t(''),
+    'attributes' => array('class' => 'class_name','width'=>variable_get('socials_amplev', ""), 'height'=>variable_get('socials_amplev', "")),
+  ));
+}
+if(variable_get('socials_check_4v')){
+  $image4 = theme_image(array(
+    'path' => ($image_path4),
+    'alt' => t(''),
+    'title' => t(''),
+    'attributes' => array('class' => 'class_name','width'=>variable_get('socials_amplev', ""), 'height'=>variable_get('socials_amplev', "")),
+  ));
+}
+if(variable_get('socials_check_5v')){
+  $image5 = theme_image(array(
+    'path' => ($image_path5),
+    'alt' => t(''),
+    'title' => t(''),
+    'attributes' => array('class' => 'class_name','width'=>variable_get('socials_amplev', ""), 'height'=>variable_get('socials_amplev', "")),
+  ));
+}
+
+  // Capture WYSIWYG text from the variable
+  $text = variable_get('text_variable', '');
+
+  // Block output in HTML with div wrapper
+  $block = array(
+    'image' => array(
+      '#prefix' => '<div style="display:inline;margin-left:'.variable_get('socials_espaiatv', '').'px;"><a href='.variable_get('socials_url_1v', '').'>',
+      '#type' => 'markup',
+      '#markup' => $image,
+	  '#suffix' => '</a></div>',
+    ),
+    'image2' => array(
+	'#prefix' => '<div style="display:inline;margin-left:'.variable_get('socials_espaiatv', '').'px;"><a href='.variable_get('socials_url_2v', '').'>',
+      '#type' => 'markup',
+      '#markup' => $image2,
+      '#suffix' => '</a></div>',
+    ),
+	'image3' => array(
+	'#prefix' => '<div style="display:inline;margin-left:'.variable_get('socials_espaiatv', '').'px;"><a href='.variable_get('socials_url_3v', '').'>',
+      '#type' => 'markup',
+      '#markup' => $image3,
+      '#suffix' => '</a></div>',
+    ),
+	'image4' => array(
+	'#prefix' => '<div style="display:inline;margin-left:'.variable_get('socials_espaiatv', '').'px;"><a href='.variable_get('socials_url_4v', '').'>',
+      '#type' => 'markup',
+      '#markup' => $image4,
+      '#suffix' => '</a></div>',
+    ),
+	'image5' => array(
+	'#prefix' => '<div style="display:inline;margin-left:'.variable_get('socials_espaiatv', '').'px;"><a href='.variable_get('socials_url_5v', '').'>',
+      '#type' => 'markup',
+      '#markup' => $image5,
+      '#suffix' => '</a></div>',
+    ),
+  );
+
+  return $block;
+}
